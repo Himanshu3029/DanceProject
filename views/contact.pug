@@ -1,0 +1,17 @@
+extends base.pug
+block style 
+    style
+        include ../static/style.css
+        include ../static/contact.css
+
+block content
+    div#container
+      p Contact Us 
+      form( class="myform" action="/contact", method="post")
+        input( placeholder="Enter your Name" id="contact" type="text", name="name")
+        input( placeholder="Enter your Email" id="contact" type="email", name="email")
+        input( placeholder="Enter your Password" id="contact" type="password", name="password")
+        input( placeholder="Enter your Contact" id="contact" type="text", name="contact")
+        input( placeholder="Enter your Address" id="contact" type="text", name="address")
+        button( id="btn") 
+          | Submit

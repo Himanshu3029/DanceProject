@@ -1,0 +1,21 @@
+doctype 
+html 
+  head 
+    title this is title
+    block style
+
+  body 
+    nav#navbar.top
+      ul
+        div#logo 
+            img(src="../static/image/logo.jpeg", alt="logo")
+            |DNA
+        li #[a(href="/") Home]
+        li #[a(href="/") About]
+        li #[a(href="/contact") Contact]
+        li #[a(href="/") Service]
+        li #[a(href="/") Projects]
+    block content 
+    footer#foot 
+        |Copyright 2022 ©  || All Rights Reserved    
+        
