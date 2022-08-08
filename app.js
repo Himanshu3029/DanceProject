@@ -6,7 +6,7 @@ const app=express()
 const port = process.env.PORT||80;
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/DanceProject');
+mongoose.connect('mongodb://localhost/DancePROJECT');
 
 const ContactSchema = new mongoose.Schema({
     name: String,
@@ -16,7 +16,7 @@ const ContactSchema = new mongoose.Schema({
     password: String
   });
   
-const Contact = mongoose.model('Contact', ContactSchema);
+const Contact = mongoose.model('contacts', ContactSchema);
 
 
 // EXPRESS SPECIFIC STUFF
