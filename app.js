@@ -4,9 +4,14 @@ const bodyparser=require('body-parser')
 // const fs=require('fs')
 const app=express()
 const port = process.env.PORT;
-const  db="mongodb+srv://himanshu:gokuss3@@cluster1.bgmoaxi.mongodb.net/DancePROJECT"
+const  db="mongodb+srv://himanshu:gokuss3@cluster1.bgmoaxi.mongodb.net/DancePROJECT"
 const mongoose = require('mongoose');
-mongoose.connect(db);
+mongoose.connect(db,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useUnifiedTopology:true,
+    useFindAndModify:false
+});
 
 const ContactSchema = new mongoose.Schema({
     name: String,
