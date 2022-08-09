@@ -3,10 +3,10 @@ const path=require('path')
 const bodyparser=require('body-parser')
 // const fs=require('fs')
 const app=express()
-const port = process.env.PORT||80;
+const port = process.env.PORT;
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/DancePROJECT');
+mongoose.connect(process.env.DATABASE);
 
 const ContactSchema = new mongoose.Schema({
     name: String,
