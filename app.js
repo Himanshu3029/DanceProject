@@ -3,29 +3,20 @@ const path=require('path')
 const bodyparser=require('body-parser')
 // const fs=require('fs')
 const app=express()
-const port = process.env.PORT;
-const  db="mongodb+srv://himanshu:gokuss3@cluster1.bgmoaxi.mongodb.net/DancePROJECT"
-const mongoose = require('mongoose');
-mongoose.connect(db,{
-    useNewUrlParser:true,
-    useCreateIndex:true,
-    useUnifiedTopology:true,
-    useFindAndModify:false
-}).then(()=>{
-         res.render('contact.pug')
-        }).catch(()=>{
-            res.status.send("not transfer")
-        });
+var mongoose = require('mongoose');
 
-// const ContactSchema = new mongoose.Schema({
-//     name: String,
-//     email: String,
-//     address: String,
-//     contact: String,
-//     password: String
-//   });
+mongoose.connect('mongodb://localhost/DanceProject')
+const port = 80;
+
+const ContactSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    address: String,
+    contact: String,
+    password: String
+  });
   
-// const Contact = mongoose.model('contacts', ContactSchema);
+const Contact = mongoose.model('contacts', ContactSchema);
 
 
 // EXPRESS SPECIFIC STUFF
@@ -45,17 +36,26 @@ app.get('/contact', (req, res)=>{
     const params = {}
     res.status(200).render('contact.pug', params);
 })
+// mongoose.connect(db,{
+//     useCreateIndex:true,
+//     useUnifiedTopology:true,
+//     useFindAndModify:false
+// }).then(()=>{
+//          console.log("connected")
+//         }).catch(()=>{
+//             console.log("connected")
+//         });
 
-// app.post('/contact', (req, res)=>{
-//     var mydata=new Contact(req.body);
-//     mydata.save().then(()=>{
-//      res.render('contact.pug')
-//     }).catch(()=>{
-//         res.status.send("not transfer")
-//     })
+app.post('/contact', (req, res)=>{
+    var mydata=new Contact(req.body);
+    mydata.save().then(()=>{
+     res.render('contact.pug')
+    }).catch(()=>{
+        res.status.send("not transfer")
+    })
 
-//     // res.status(200).render('contact.pug', params);
-// })
+    // res.status(200).render('contact.pug', params);
+})
 
 
 // START THE SERVER
